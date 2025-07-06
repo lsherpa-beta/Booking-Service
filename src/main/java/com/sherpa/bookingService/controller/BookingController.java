@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // this need to be read from the properties file
@@ -18,12 +19,16 @@ public class BookingController {
 
     @GetMapping("/ping")
     public String healthCheck() {
-        return "Welcome to our Nail Therapy";
+        return "Pong";
     }
 
     @GetMapping
     public List<Booking> getAllBooking() {
         return bookingService.findAllBooking();
+    }
+    @GetMapping("/{id}")
+    public Optional<Booking> getBookingDetailsById(@RequestParam Long bookingNbr, @PathVariable String id){
+        return bookingService.findByBookingNbr(bookingNbr);
     }
 
     @PostMapping
