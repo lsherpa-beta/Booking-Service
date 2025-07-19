@@ -1,6 +1,6 @@
 package com.sherpa.bookingService.service;
 
-import com.sherpa.bookingService.model.Booking;
+import com.sherpa.bookingService.entity.Booking;
 import com.sherpa.bookingService.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +20,12 @@ public class BookingService {
 
 
     public Booking saveBooking(Booking booking) {
-        boolean exists = bookingRepository.existsByAppointmentDateAndAppointmentTime(
-                booking.getAppointmentDate(), booking.getAppointmentTime());
+        boolean exists = bookingRepository.existsByAppointmentDateAndAppointmentTime(booking.getAppointmentDate(), booking.getAppointmentTime());
 
         if (exists) {
             throw new IllegalStateException("This time slot is already booked.");
         }
-       return bookingRepository.save(booking);
+        return bookingRepository.save(booking);
     }
 
     public List<Booking> findAllBooking() {
@@ -34,6 +33,6 @@ public class BookingService {
     }
 
     public Optional<Booking> findByBookingNbr(Long bookingId) {
-        return  bookingRepository.findById(bookingId);
+        return bookingRepository.findById(bookingId);
     }
 }

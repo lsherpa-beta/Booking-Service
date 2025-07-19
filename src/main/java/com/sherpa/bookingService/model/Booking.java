@@ -7,13 +7,9 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-@Data
-@Table(name="booking")
+
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
 

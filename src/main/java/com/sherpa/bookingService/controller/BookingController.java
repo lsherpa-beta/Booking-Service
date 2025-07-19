@@ -1,6 +1,6 @@
 package com.sherpa.bookingService.controller;
 
-import com.sherpa.bookingService.model.Booking;
+import com.sherpa.bookingService.entity.Booking;
 import com.sherpa.bookingService.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // this need to be read from the properties file
-@RequestMapping("/api/booking")
+@RequestMapping("/v1/booking")
 public class BookingController {
     @Autowired
     private BookingService bookingService;
